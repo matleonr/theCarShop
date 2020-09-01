@@ -13,6 +13,8 @@
 		977D95F624FDE6E20049B37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977D95F424FDE6E20049B37C /* Main.storyboard */; };
 		977D95F824FDE6F90049B37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 977D95F724FDE6F90049B37C /* Assets.xcassets */; };
 		977D95FB24FDE6F90049B37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 977D95F924FDE6F90049B37C /* LaunchScreen.storyboard */; };
+		97A13C2524FE998D0084749C /* CarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A13C2424FE998D0084749C /* CarCell.swift */; };
+		97A13C2B24FE9EF00084749C /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A13C2A24FE9EF00084749C /* Car.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		977D95F724FDE6F90049B37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		977D95FA24FDE6F90049B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		977D95FC24FDE6F90049B37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		97A13C2424FE998D0084749C /* CarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarCell.swift; sourceTree = "<group>"; };
+		97A13C2A24FE9EF00084749C /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +60,49 @@
 		977D95ED24FDE6E20049B37C /* The Car Shop */ = {
 			isa = PBXGroup;
 			children = (
+				97A13C2924FE9EC20084749C /* Views */,
+				97A13C2824FE9EAB0084749C /* Models */,
+				97A13C2724FE9E930084749C /* ViewModels */,
+				97A13C2624FE9CDD0084749C /* ViewControllers */,
 				977D95EE24FDE6E20049B37C /* AppDelegate.swift */,
 				977D95F024FDE6E20049B37C /* SceneDelegate.swift */,
-				977D95F224FDE6E20049B37C /* ViewController.swift */,
-				977D95F424FDE6E20049B37C /* Main.storyboard */,
-				977D95F724FDE6F90049B37C /* Assets.xcassets */,
-				977D95F924FDE6F90049B37C /* LaunchScreen.storyboard */,
 				977D95FC24FDE6F90049B37C /* Info.plist */,
 			);
 			path = "The Car Shop";
+			sourceTree = "<group>";
+		};
+		97A13C2624FE9CDD0084749C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				97A13C2424FE998D0084749C /* CarCell.swift */,
+				977D95F224FDE6E20049B37C /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		97A13C2724FE9E930084749C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		97A13C2824FE9EAB0084749C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97A13C2A24FE9EF00084749C /* Car.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		97A13C2924FE9EC20084749C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				977D95F424FDE6E20049B37C /* Main.storyboard */,
+				977D95F924FDE6F90049B37C /* LaunchScreen.storyboard */,
+				977D95F724FDE6F90049B37C /* Assets.xcassets */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +178,8 @@
 			files = (
 				977D95F324FDE6E20049B37C /* ViewController.swift in Sources */,
 				977D95EF24FDE6E20049B37C /* AppDelegate.swift in Sources */,
+				97A13C2B24FE9EF00084749C /* Car.swift in Sources */,
+				97A13C2524FE998D0084749C /* CarCell.swift in Sources */,
 				977D95F124FDE6E20049B37C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,7 +334,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MLR3312.The-Car-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +352,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "MLR3312.The-Car-Shop";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
