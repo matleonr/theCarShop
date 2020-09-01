@@ -1,0 +1,32 @@
+PODS:
+  - RxCocoa (5.1.1):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
+  - RxRelay (5.1.1):
+    - RxSwift (~> 5)
+  - RxSwift (5.1.1)
+  - SQLite.swift (0.12.2):
+    - SQLite.swift/standard (= 0.12.2)
+  - SQLite.swift/standard (0.12.2)
+
+DEPENDENCIES:
+  - RxCocoa (~> 5)
+  - RxSwift (~> 5.1)
+  - SQLite.swift (~> 0.12.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - RxCocoa
+    - RxRelay
+    - RxSwift
+    - SQLite.swift
+
+SPEC CHECKSUMS:
+  RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
+  RxRelay: d77f7d771495f43c556cbc43eebd1bb54d01e8e9
+  RxSwift: 81470a2074fa8780320ea5fe4102807cb7118178
+  SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
+
+PODFILE CHECKSUM: 277d46415b5c99ba83745e30db76033ea848ec84
+
+COCOAPODS: 1.7.5

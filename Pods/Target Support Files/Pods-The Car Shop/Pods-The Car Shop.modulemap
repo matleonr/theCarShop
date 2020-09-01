@@ -1,0 +1,6 @@
+framework module Pods_The_Car_Shop {
+  umbrella header "Pods-The Car Shop-umbrella.h"
+
+  export *
+  module * { export * }
+}
