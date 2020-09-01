@@ -15,10 +15,4 @@ import Foundation
     var status: String?
     var price: Int?
     var dateReleased: Int?
-    var idSuscripcionOneSignal: String?
-    var aceptaTerminosCondiciones: Bool?
-    var envioNotificacion: Bool?
-    var idDispositivo: String?
-    var idUsuario: String?
-    var idTipoSuscripcionNotificacion: Int?
 }
