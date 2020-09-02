@@ -10,6 +10,7 @@ import Foundation
 
  public class Car: Codable {
     
+    var id: Int?
     var model: String?
     var seats: Int?
     var status: String?
