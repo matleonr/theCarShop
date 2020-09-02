@@ -20,12 +20,12 @@ class DBHelper {
     let status = Expression<String>("status")
     let price = Expression<Int>("price")
     let datereleased = Expression<Int>("datereleased")
+    let category = Expression<String>("category")
     
     init() {
         self.carShopDB = createDatabase()
         self.createTableCars()
         self.fillCarsTable()
-        self.getCars()
     }
     
     func createDatabase() -> Connection! {
@@ -57,6 +57,7 @@ class DBHelper {
             table.column(status)
             table.column(price)
             table.column(datereleased)
+            table.column(category)
         }
         
         do {
@@ -68,8 +69,8 @@ class DBHelper {
     }
     
     func fillCarsTable() {
-        let insertCamaro = self.carsTable.insert(self.model <- "Camaro", seats <- 4, status <- "used", price <- 50000000, datereleased <- 1969)
-        let insertChallenger = self.carsTable.insert(self.model <- "Challenger", seats <- 4, status <- "used", price <- 70000000, datereleased <- 1970)
+        let insertCamaro = self.carsTable.insert(self.model <- "Camaro", seats <- 4, status <- "used", price <- 50000000, datereleased <- 1969, self.category <- "commercial")
+        let insertChallenger = self.carsTable.insert(self.model <- "Challenger", seats <- 4, status <- "used", price <- 70000000, datereleased <- 1970, self.category <- "commercial")
         
         do {
             try carShopDB.run(insertCamaro)
@@ -80,25 +81,48 @@ class DBHelper {
         }
     }
     
-    func getCars() {
+    func getCars() -> [Car]{
+        var carsArray = [Car]()
+        let carScoped = Car()
         do {
             let cars = try self.carShopDB.prepare(self.carsTable)
+            
+            
             for car in cars {
                 print("this car is a \(car[self.model]), from the year \(car[self.datereleased]) and it costs \(car[self.price])")
+                carScoped.id = car[self.id]
+                carScoped.model = car[self.model]
+                carScoped.seats = car[self.seats]
+                carScoped.status = car[self.status]
+                carScoped.price = car[self.price]
+                carScoped.dateReleased = car[self.datereleased]
+                carScoped.category = car[self.category]
+                
+                carsArray.append(carScoped)
+                
             }
+            return carsArray
         } catch  {
+            
             print(error)
+            return carsArray
         }
     }
     
     func update(car : Car)  {
         let carFromDb = self.carsTable.filter(self.id == car.id!)
-        let carUpdate = carFromDb.update(self.model <- car.model!, seats <- car.seats!, status <- car.status!, price <- car.price!, datereleased <- car.dateReleased!)
+        let carUpdate = carFromDb.update(self.model <- car.model!, seats <- car.seats!, status <- car.status!, price <- car.price!, datereleased <- car.dateReleased!, category <- car.category!)
         do {
             try self.carShopDB.run(carUpdate)
             print("model updated")
         } catch  {
             print(error)
         }
+    }
+    
+    
+    
+    func delete(car:Car) {
+        
     }
 }

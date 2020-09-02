@@ -16,5 +16,11 @@ class CarCell: UITableViewCell {
     @IBOutlet weak var modelLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     
+    func set (car:Car) {
+        priceLabel.text = String(describing: car.price)
+        statusLabel.text = car.status
+        modelLabel.text = car.model
+        categoryLabel.text = car.category
+    }
 
 }
