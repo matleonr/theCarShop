@@ -11,8 +11,9 @@ import RxCocoa
 import RxSwift
 
 class CarsViewModel:ViewModelProtocol{
-    private let disposeBag = DisposeBag()
     
+    private let disposeBag = DisposeBag()
+    let carsDB = DBHelper()
     struct Input{
         
     }
