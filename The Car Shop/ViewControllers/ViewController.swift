@@ -18,7 +18,7 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
+        title = "The Car Shop"
         cars = carsDB.getCars()
         carsTableView.delegate = self
         carsTableView.dataSource = self
