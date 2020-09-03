@@ -9,15 +9,20 @@
 import UIKit
 
 class CarViewController: BaseViewController {
-
+    
+    var car : Car?
+    @IBOutlet weak var carImageView: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = car?.model
 
-        // Do any additional setup after loading the view.
-        self.navigationController!.navigationBar.isTranslucent = true
+        carImageView.image = UIImage(named: (car?.image)!)
     }
     
-
+    override func viewWillAppear(_ animated: Bool) {
+        setNavigationBar()
+    }
     
     
 

@@ -7,28 +7,59 @@
 //
 
 import UIKit
+import RxSwift
 
 class ViewController: BaseViewController {
 
     let carsDB = DBHelper()
     var cars : [Car] = []
+    let disposeBag = DisposeBag()
+    let carsViewModel = CarsViewModel()
     
     @IBOutlet weak var carsTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "The Car Shop"
-        cars = carsDB.getCars()
+        bind()
+        loadCars()
+        setUI()
+        
         carsTableView.delegate = self
         carsTableView.dataSource = self
     }
     
+    func loadCars() {
+        
+    }
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "MasterToDetail" {
+            let carVC = segue.destination as! CarViewController
+            carVC.car = sender as? Car
+        }
+    }
+    
+    func setUI() {
+        title = "The Car Shop"
+        carsTableView.layer.cornerRadius = 20
+    }
+    
+    
+    func bind() {
+//        carsViewModel.getSuscriptionsData(token: sesion!.token!, idOnesignal: oneSignalID, IdApplication: 1)
+//
+        carsViewModel.output.cars.asObservable().subscribe(
+            onNext: { carsRecieved in
+                
+                for car in carsRecieved {
+                    self.cars.append(car)
+                }
+                
+        }).disposed(by: disposeBag)
     }
 
 
@@ -48,7 +79,8 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+        let car = cars[indexPath.row]
+        performSegue(withIdentifier: "MasterToDetail", sender: car)
     }
         
     

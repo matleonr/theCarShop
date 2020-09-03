@@ -21,6 +21,7 @@ class CarsViewModel:ViewModelProtocol{
     struct Output{
         var isBussy = BehaviorRelay<Bool?>(value : nil)
         var alreadyLoadSuscriptions = BehaviorRelay<Bool?>(value : nil)
+        var cars = BehaviorRelay<[Car]>(value : [])
     }
     
     let input : Input
@@ -29,6 +30,11 @@ class CarsViewModel:ViewModelProtocol{
     init(){
         input = Input()
         output = Output()
+        getCars()
+    }
+    
+    func getCars() {
+        self.output.cars.accept(carsDB.getCars())
         
     }
     

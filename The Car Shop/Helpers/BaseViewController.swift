@@ -12,11 +12,19 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBar()
 
         // Do any additional setup after loading the view.
     }
     
+    func setNavigationBar() {
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+    }
 
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+     }
     /*
     // MARK: - Navigation
 
