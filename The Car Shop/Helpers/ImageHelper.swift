@@ -11,18 +11,6 @@ import UIKit
 
 public class ImageHelper {
     
-//    func decodeToImage (imageData: String) -> UIImage {
-//        let nsData = NSData()
-//        let image = UIImage(data: (nsData as NSData) as Data)
-//        return image!
-//    }
-//    
-//    func encodetoString(image: UIImage) -> String {
-//        let imageData: NSData = image.pngData()! as NSData
-//        print(imageData.description)
-//        return imageData.description
-//    }
-    
     
     func saveImage(image: UIImage, nameImage: String) -> String {
         guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
@@ -33,7 +21,7 @@ public class ImageHelper {
         }
         do {
             try data.write(to: directory.appendingPathComponent("\(nameImage).png")!)
-            return "\(directory.path!)/\(nameImage).png"
+            return "\(nameImage).png"
         } catch {
             print(error.localizedDescription)
             return ""
@@ -41,10 +29,10 @@ public class ImageHelper {
     }
     
     func getSavedImage(named: String) -> UIImage? {
-        
-            return UIImage(contentsOfFile: URL(fileURLWithPath: named).path)
-//        }
-//        return nil
+        if let dir = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) {
+            return UIImage(contentsOfFile: URL(fileURLWithPath: dir.absoluteString).appendingPathComponent(named).path)
+        }
+        return nil
     }
     
     

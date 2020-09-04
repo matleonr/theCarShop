@@ -134,7 +134,7 @@
                                 <rect key="frame" x="83.5" y="578.5" width="247" height="36"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             </textField>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoz-al-Au2" userLabel="divider3">
                                 <rect key="frame" x="87" y="614.5" width="240" height="1"/>
@@ -199,13 +199,13 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ty6-hf-Aj7">
-                                <rect key="frame" x="87" y="706.5" width="35" height="21"/>
+                                <rect key="frame" x="87" y="709" width="35" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="U3z-8Q-feo">
-                                <rect key="frame" x="278" y="701.5" width="51" height="31"/>
+                                <rect key="frame" x="278" y="706" width="51" height="31"/>
                             </switch>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -217,7 +217,6 @@
                             <constraint firstItem="Vxu-Ne-B1z" firstAttribute="height" secondItem="vBG-4E-SuV" secondAttribute="height" id="3sK-XE-uEj"/>
                             <constraint firstItem="MTJ-9L-qne" firstAttribute="top" secondItem="viq-Zn-cac" secondAttribute="bottom" id="5Ue-Ve-aWO"/>
                             <constraint firstItem="2Te-iw-2Vj" firstAttribute="top" secondItem="vBG-4E-SuV" secondAttribute="bottom" id="75c-xq-Ws6"/>
-                            <constraint firstItem="U3z-8Q-feo" firstAttribute="centerY" secondItem="5CK-oG-fXY" secondAttribute="centerY" multiplier="1.6" id="7Be-a0-fFR"/>
                             <constraint firstItem="2Te-iw-2Vj" firstAttribute="centerX" secondItem="5CK-oG-fXY" secondAttribute="centerX" id="7IZ-B1-pIv"/>
                             <constraint firstItem="ohH-2v-GLU" firstAttribute="width" secondItem="vBG-4E-SuV" secondAttribute="width" id="7W4-FK-2Iv"/>
                             <constraint firstItem="ane-TA-5Zj" firstAttribute="centerX" secondItem="5CK-oG-fXY" secondAttribute="centerX" id="8TJ-a4-4ld"/>
@@ -231,7 +230,7 @@
                             <constraint firstItem="Aoz-al-Au2" firstAttribute="top" secondItem="Vxu-Ne-B1z" secondAttribute="bottom" id="IWc-Nq-UK8"/>
                             <constraint firstItem="vBG-4E-SuV" firstAttribute="width" secondItem="5CK-oG-fXY" secondAttribute="width" multiplier="0.596618" id="JOk-HV-yxP"/>
                             <constraint firstItem="U3z-8Q-feo" firstAttribute="trailing" secondItem="ane-TA-5Zj" secondAttribute="trailing" id="LsQ-Eb-nzE"/>
-                            <constraint firstItem="Ty6-hf-Aj7" firstAttribute="centerY" secondItem="5CK-oG-fXY" secondAttribute="centerY" multiplier="1.6" id="OGD-re-Pya"/>
+                            <constraint firstItem="Ty6-hf-Aj7" firstAttribute="top" secondItem="ane-TA-5Zj" secondAttribute="bottom" constant="20" id="NzT-kt-4Y3"/>
                             <constraint firstItem="vBG-4E-SuV" firstAttribute="top" secondItem="Ddp-ET-CQY" secondAttribute="bottom" constant="58.5" id="PAR-Ju-vlp"/>
                             <constraint firstItem="2Te-iw-2Vj" firstAttribute="width" secondItem="vBG-4E-SuV" secondAttribute="width" id="PFQ-z7-pj6"/>
                             <constraint firstItem="3r2-FN-l4o" firstAttribute="trailing" secondItem="Ddp-ET-CQY" secondAttribute="trailing" id="QiK-il-7HV"/>
@@ -251,6 +250,7 @@
                             <constraint firstItem="Ddp-ET-CQY" firstAttribute="leading" secondItem="3r2-FN-l4o" secondAttribute="leading" id="hVV-xw-4S9"/>
                             <constraint firstItem="Wf4-MN-RDr" firstAttribute="height" secondItem="5CK-oG-fXY" secondAttribute="height" multiplier="0.045" id="iTX-Ec-TSD"/>
                             <constraint firstItem="3r2-FN-l4o" firstAttribute="bottom" secondItem="Wf4-MN-RDr" secondAttribute="bottom" constant="27" id="jrx-vi-DGc"/>
+                            <constraint firstItem="U3z-8Q-feo" firstAttribute="top" secondItem="ane-TA-5Zj" secondAttribute="bottom" constant="17" id="kCT-2e-EHw"/>
                             <constraint firstItem="0AP-Rb-kfU" firstAttribute="width" secondItem="vBG-4E-SuV" secondAttribute="width" multiplier="0.97166" id="kSR-y6-Nbr"/>
                             <constraint firstItem="0AP-Rb-kfU" firstAttribute="centerX" secondItem="5CK-oG-fXY" secondAttribute="centerX" id="p4C-6C-qSv"/>
                             <constraint firstItem="viq-Zn-cac" firstAttribute="width" secondItem="vBG-4E-SuV" secondAttribute="width" multiplier="0.97166" id="t47-gH-1iG"/>
@@ -356,7 +356,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oak-ci-h5W">
                                         <rect key="frame" x="0.0" y="0.0" width="75" height="30"/>
                                         <state key="normal" title="Delete">
-                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srO-6e-7SP">

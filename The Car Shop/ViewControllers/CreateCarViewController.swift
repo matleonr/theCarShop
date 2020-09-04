@@ -36,6 +36,7 @@ class CreateCarViewController: BaseViewController,UITextFieldDelegate,UINavigati
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        bind()
         let tapHidekeyboard: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tapHidekeyboard)
         
@@ -90,9 +91,9 @@ class CreateCarViewController: BaseViewController,UITextFieldDelegate,UINavigati
     func bind() {
         saveButton.rx.tap.asObservable().subscribe(
             onNext: {
-                
+                self.dismissKeyboard()
                 self.createCarViewModel.input.car.accept(self.createNewCar())
-                
+                self.navigationController?.popViewController(animated: true)
                 
         }).disposed(by: disposeBag)
         
