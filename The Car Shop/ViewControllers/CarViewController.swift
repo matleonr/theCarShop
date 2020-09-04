@@ -38,7 +38,7 @@ class CarViewController: BaseViewController, UITextFieldDelegate {
         title = car.model
         carImageView.image = carImageView.image?.withRenderingMode(.alwaysTemplate)
         carImageView.tintColor = .lightGray
-        //carImageView.image = UIImage(named: (car.image)!)
+        carImageView.image = imageHelper.getSavedImage(named: car.image!)!
 
         setStatusImage(carStatus: car.status!)
         categoryTextfield.text = car.category

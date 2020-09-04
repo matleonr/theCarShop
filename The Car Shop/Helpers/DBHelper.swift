@@ -34,7 +34,7 @@ class DBHelper {
             let filepath = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathExtension(path)
 
             let db = try Connection(filepath.path)
-            print("database created with path \(path)")
+            print("database created with path \(filepath.path)")
             return db
         } catch {
             print(error)
@@ -76,17 +76,29 @@ class DBHelper {
             }
         }
     }
+    
+    func saveImages() -> [String] {
+        var paths : [String] = []
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Camaro Image")!, nameImage: "Camaro_Image"))
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Challenger image")!, nameImage: "Challenger_image"))
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Mustang Image")!, nameImage: "Mustang_Image"))
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Twizy image")!, nameImage: "Twizy_image"))
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Tesla Model 3 image")!, nameImage: "Tesla_Model_3_image"))
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Ssangyong Tivoli image")!, nameImage: "Ssangyong_Tivoli_image"))
+        paths.append(imageHelper.saveImage(image: UIImage(named:"Renault Twingo image")!, nameImage: "Renault_Twingo_image"))
+        return paths
+    }
 
     func generateCarsToFill() -> [Car] {
         var carsToFill: [Car] = []
 
-        let car1 = Car(id: 1, model: "Chevrolet Camaro", seats: 4, status: "used", price: 36500, dateReleased: 1969, category: "commercial", image: "Camaro Image")
-        let car2 = Car(id: 2, model: "Dogde Challenger", seats: 4, status: "used", price: 15000, dateReleased: 1970, category: "commercial", image: "Challenger image")
-        let car3 = Car(id: 3, model: "Ford Mustang", seats: 4, status: "used", price: 34900, dateReleased: 1964, category: "commercial", image: "Mustang Image")
-        let car4 = Car(id: 4, model: "Renault Twizy", seats: 2, status: "new", price: 8886, dateReleased: 2011, category: "electric", image: "Twizy image")
-        let car5 = Car(id: 5, model: "Tesla Model 3", seats: 5, status: "new", price: 59088, dateReleased: 2016, category: "electric", image: "Tesla Model 3 image")
-        let car6 = Car(id: 5, model: "Ssangyong Tivoli", seats: 5, status: "new", price: 7510, dateReleased: 2014, category: "truck", image: "Ssangyong Tivoli image")
-        let car7 = Car(id: 4, model: "Renault Twingo", seats: 4, status: "used", price: 5739, dateReleased: 1993, category: "commercial", image: "Renault Twingo image")
+        let car1 = Car(id: 1, model: "Chevrolet Camaro", seats: 4, status: "used", price: 36500, dateReleased: 1969, category: "commercial", image: saveImages()[0])
+        let car2 = Car(id: 2, model: "Dogde Challenger", seats: 4, status: "used", price: 15000, dateReleased: 1970, category: "commercial", image: saveImages()[1])
+        let car3 = Car(id: 3, model: "Ford Mustang", seats: 4, status: "used", price: 34900, dateReleased: 1964, category: "commercial", image: saveImages()[2])
+        let car4 = Car(id: 4, model: "Renault Twizy", seats: 2, status: "new", price: 8886, dateReleased: 2011, category: "electric", image: saveImages()[3])
+        let car5 = Car(id: 5, model: "Tesla Model 3", seats: 5, status: "new", price: 59088, dateReleased: 2016, category: "electric", image: saveImages()[4])
+        let car6 = Car(id: 6, model: "Ssangyong Tivoli", seats: 5, status: "new", price: 7510, dateReleased: 2014, category: "truck", image: saveImages()[5])
+        let car7 = Car(id: 7, model: "Renault Twingo", seats: 4, status: "used", price: 5739, dateReleased: 1993, category: "commercial", image: saveImages()[6] )
 
         carsToFill.append(car1)
         carsToFill.append(car2)

@@ -11,37 +11,43 @@ import UIKit
 
 public class ImageHelper {
     
-    func decodeToImage (base64:String) -> UIImage {
-        let imageData = Data.init(base64Encoded: base64, options: .init(rawValue: 0))
-        let image = UIImage(data: imageData!)
-        return image!
+//    func decodeToImage (imageData: String) -> UIImage {
+//        let nsData = NSData()
+//        let image = UIImage(data: (nsData as NSData) as Data)
+//        return image!
+//    }
+//    
+//    func encodetoString(image: UIImage) -> String {
+//        let imageData: NSData = image.pngData()! as NSData
+//        print(imageData.description)
+//        return imageData.description
+//    }
+    
+    
+    func saveImage(image: UIImage, nameImage: String) -> String {
+        guard let data = image.jpegData(compressionQuality: 1) ?? image.pngData() else {
+            return ""
+        }
+        guard let directory = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false) as NSURL else {
+            return ""
+        }
+        do {
+            try data.write(to: directory.appendingPathComponent("\(nameImage).png")!)
+            return "\(directory.path!)/\(nameImage).png"
+        } catch {
+            print(error.localizedDescription)
+            return ""
+        }
     }
     
-    func encode(image: UIImage) -> String {
-        return image.jpegData(compressionQuality: 1)?.base64EncodedString() ?? ""
+    func getSavedImage(named: String) -> UIImage? {
+        
+            return UIImage(contentsOfFile: URL(fileURLWithPath: named).path)
+//        }
+//        return nil
     }
     
     
-    func generateImagesToCars() -> [String] {
-        var images: [String] = []
-
-        let image1 = ""
-        let image2 = ""
-        let image3 = ""
-        let image4 = ""
-        let image5 = ""
-        let image6 = ""
-        let image7 = ""
-
-        images.append(image1)
-        images.append(image2)
-        images.append(image3)
-        images.append(image4)
-        images.append(image5)
-        images.append(image6)
-        images.append(image7)
-
-        return images
-    }
+    
     
 }

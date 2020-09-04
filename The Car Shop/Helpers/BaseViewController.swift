@@ -10,7 +10,7 @@ import UIKit
 
 class BaseViewController: UIViewController {
     
-    
+    public let imageHelper = ImageHelper()
     override func viewDidLoad() {
         super.viewDidLoad() 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -25,6 +25,13 @@ class BaseViewController: UIViewController {
             }
         }
     }
+    
+    public lazy var date: String = {
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "dd.MM.yyyy"
+        return formatter.string(from: date)
+    }()
 
     @objc func keyboardWillHide(notification: NSNotification) {
         if view.frame.origin.y != 0 {

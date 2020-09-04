@@ -9,6 +9,8 @@
 import UIKit
 
 class CarCell: UITableViewCell {
+    
+    let imageHelper = ImageHelper()
 
     @IBOutlet weak var carPicture: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
@@ -22,7 +24,9 @@ class CarCell: UITableViewCell {
         setStatusImage(carStatus: car.status!)
         modelLabel.text = car.model
         categoryLabel.text = car.category
-        carPicture.image = UIImage(named: car.image!)
+        carPicture.image = imageHelper.getSavedImage(named: car.image!)
+            
+            
     }
     
     

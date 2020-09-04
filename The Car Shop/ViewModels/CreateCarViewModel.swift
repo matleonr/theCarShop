@@ -15,7 +15,8 @@ class CreateCarViewModel: ViewModelProtocol {
     let carsDB = DBHelper()
     
     struct Input {
-        
+        var saveButtonPressed = PublishSubject<Void>()
+        var car = BehaviorRelay<Car?>(value: nil)
     }
 
     struct Output {
@@ -28,7 +29,15 @@ class CreateCarViewModel: ViewModelProtocol {
     init() {
         input = Input()
         output = Output()
-//        getCars()
-//        navigate()
+        create()
+    }
+    
+    func create() {
+        input.saveButtonPressed.asObserver().subscribe({ _ in
+
+            if self.input.car.value?.model != nil {
+                self.carsDB.create(car: self.input.car.value!)
+            }
+        }).disposed(by: disposeBag)
     }
 }
