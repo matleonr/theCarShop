@@ -11,7 +11,6 @@ import RxSwift
 
 class ViewController: BaseViewController {
 
-    let carsDB = DBHelper()
     var cars : [Car] = []
     let disposeBag = DisposeBag()
     let carsViewModel = CarsViewModel()
@@ -23,7 +22,6 @@ class ViewController: BaseViewController {
         bind()
         loadCars()
         setUI()
-        
         carsTableView.delegate = self
         carsTableView.dataSource = self
     }
@@ -35,8 +33,6 @@ class ViewController: BaseViewController {
     // MARK: - Navigation
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
         if segue.identifier == "MasterToDetail" {
             let carVC = segue.destination as! CarViewController
             carVC.car = sender as? Car
@@ -50,8 +46,7 @@ class ViewController: BaseViewController {
     
     
     func bind() {
-//        carsViewModel.getSuscriptionsData(token: sesion!.token!, idOnesignal: oneSignalID, IdApplication: 1)
-//
+
         carsViewModel.output.cars.asObservable().subscribe(
             onNext: { carsRecieved in
                 

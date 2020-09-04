@@ -12,27 +12,28 @@ class BaseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setNavigationBar()
+    
 
         // Do any additional setup after loading the view.
     }
     
-    func setNavigationBar() {
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-    }
+   
 
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
-     }
-    /*
-    // MARK: - Navigation
+//    override var preferredStatusBarStyle: UIStatusBarStyle {
+//        return .lightContent
+//     }
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+
+extension UITabBarController {
+    open override var childForStatusBarStyle: UIViewController? {
+        return selectedViewController?.childForStatusBarStyle ?? selectedViewController
     }
-    */
+}
 
+extension UINavigationController {
+    open override var childForStatusBarStyle: UIViewController? {
+        return topViewController?.childForStatusBarStyle ?? topViewController
+    }
 }
