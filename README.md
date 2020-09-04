@@ -1,5 +1,10 @@
 # theCarShop
 
+--
+please run pod install
+--
+available from iOS 13.7
+--
 There is a new Carshop in town called The Car Shop which wants to show the car catalog to the final customers.
 
 Your Job is to create an android application to browse and see the cars within the store.
