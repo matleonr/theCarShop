@@ -118,6 +118,22 @@ class DBHelper {
             return carsArray
         }
     }
+    
+    func getCar(CarId:Int) -> Car? {
+        let carFromDb = carsTable.filter(self.id == CarId)
+        var car : Car?
+        do {
+            for carGetted in try carShopDB.prepare(carFromDb){
+                car = Car(id: carGetted[id], model: carGetted[model], seats: carGetted[seats], status: carGetted[status], price: carGetted[price], dateReleased: carGetted[datereleased], category: carGetted[category], image: carGetted[image])
+                return car
+            }
+            
+        } catch  {
+            print(error)
+        }
+        return car
+       
+    }
 
     func update(car: Car) {
         let carFromDb = carsTable.filter(id == car.id!)
@@ -131,5 +147,12 @@ class DBHelper {
     }
 
     func delete(car: Car) {
+        let carFromDb = carsTable.filter(self.id == car.id!)
+        let carDelete = carFromDb.delete()
+        do {
+            try carShopDB.run(carDelete)
+        } catch  {
+            print(error)
+        }
     }
 }

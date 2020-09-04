@@ -20,17 +20,30 @@ class ViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         bind()
-        loadCars()
         setUI()
         carsTableView.delegate = self
         carsTableView.dataSource = self
     }
     
-    func loadCars() {
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        carsViewModel.input.screenAppeared.accept(true)
         
     }
     
-    // MARK: - Navigation
+    func updateTable() {
+        let indexPath = IndexPath(row: self.cars.count - 1, section: 0)
+
+        carsTableView.beginUpdates()
+        carsTableView.insertRows(at: [indexPath], with: .automatic)
+        carsTableView.endUpdates()
+    }
+    
+    func cleanTable() {
+        carsTableView.endUpdates()
+        cars.removeAll()
+        carsTableView.reloadData()
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "MasterToDetail" {
@@ -49,9 +62,10 @@ class ViewController: BaseViewController {
 
         carsViewModel.output.cars.asObservable().subscribe(
             onNext: { carsRecieved in
-                
+                self.cleanTable()
                 for car in carsRecieved {
                     self.cars.append(car)
+                    self.updateTable()
                 }
                 
         }).disposed(by: disposeBag)

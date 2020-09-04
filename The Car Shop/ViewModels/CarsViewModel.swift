@@ -15,12 +15,10 @@ class CarsViewModel:ViewModelProtocol{
     private let disposeBag = DisposeBag()
     let carsDB = DBHelper()
     struct Input{
-        
+        var screenAppeared = BehaviorRelay<Bool?>(value : false)
     }
     
     struct Output{
-        var isBussy = BehaviorRelay<Bool?>(value : nil)
-        var alreadyLoadSuscriptions = BehaviorRelay<Bool?>(value : nil)
         var cars = BehaviorRelay<[Car]>(value : [])
     }
     
@@ -34,8 +32,16 @@ class CarsViewModel:ViewModelProtocol{
     }
     
     func getCars() {
-        self.output.cars.accept(carsDB.getCars())
-        
+        input.screenAppeared.asObservable().subscribe(
+            onNext: { screenAppeared in
+            
+                if screenAppeared!{
+                    self.output.cars.accept(self.carsDB.getCars())
+                }
+            
+            }).disposed(by: disposeBag)
     }
+    
+    
     
 }
