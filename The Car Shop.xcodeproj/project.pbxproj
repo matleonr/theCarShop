@@ -23,6 +23,8 @@
 		97A13C3624FED7530084749C /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A13C3524FED7530084749C /* ViewModelProtocol.swift */; };
 		97A13C3824FED7F70084749C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A13C3724FED7F70084749C /* BaseViewController.swift */; };
 		97A13C3A24FEDA580084749C /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97A13C3924FEDA580084749C /* DBHelper.swift */; };
+		97B8485325027B4B00E32D3E /* CreateCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B8485225027B4B00E32D3E /* CreateCarViewController.swift */; };
+		97B8485525027F7A00E32D3E /* CreateCarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97B8485425027F7A00E32D3E /* CreateCarViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		97A13C3524FED7530084749C /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
 		97A13C3724FED7F70084749C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		97A13C3924FEDA580084749C /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
+		97B8485225027B4B00E32D3E /* CreateCarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCarViewController.swift; sourceTree = "<group>"; };
+		97B8485425027F7A00E32D3E /* CreateCarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCarViewModel.swift; sourceTree = "<group>"; };
 		D92DE076567B1F3C99C07C72 /* Pods-The Car Shop.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Car Shop.release.xcconfig"; path = "Target Support Files/Pods-The Car Shop/Pods-The Car Shop.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -98,14 +102,12 @@
 		977D95ED24FDE6E20049B37C /* The Car Shop */ = {
 			isa = PBXGroup;
 			children = (
+				977D95FC24FDE6F90049B37C /* Info.plist */,
 				97A13C3424FED7290084749C /* Helpers */,
 				97A13C2924FE9EC20084749C /* Views */,
 				97A13C2824FE9EAB0084749C /* Models */,
 				97A13C2724FE9E930084749C /* ViewModels */,
 				97A13C2624FE9CDD0084749C /* ViewControllers */,
-				977D95EE24FDE6E20049B37C /* AppDelegate.swift */,
-				977D95F024FDE6E20049B37C /* SceneDelegate.swift */,
-				977D95FC24FDE6F90049B37C /* Info.plist */,
 			);
 			path = "The Car Shop";
 			sourceTree = "<group>";
@@ -116,6 +118,7 @@
 				97A13C2424FE998D0084749C /* CarCell.swift */,
 				977D95F224FDE6E20049B37C /* ViewController.swift */,
 				975F8F722500AD1B00D74B07 /* CarViewController.swift */,
+				97B8485225027B4B00E32D3E /* CreateCarViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -125,6 +128,7 @@
 			children = (
 				97A13C3124FED2E00084749C /* CarsViewModel.swift */,
 				975F8F742500B12B00D74B07 /* CarViewModel.swift */,
+				97B8485425027F7A00E32D3E /* CreateCarViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -150,12 +154,22 @@
 		97A13C3424FED7290084749C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				97B8485125027A2B00E32D3E /* Sources */,
 				97A13C3524FED7530084749C /* ViewModelProtocol.swift */,
 				97A13C3724FED7F70084749C /* BaseViewController.swift */,
 				97A13C3924FEDA580084749C /* DBHelper.swift */,
 				975F8F7025009E4700D74B07 /* ImageHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		97B8485125027A2B00E32D3E /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				977D95EE24FDE6E20049B37C /* AppDelegate.swift */,
+				977D95F024FDE6E20049B37C /* SceneDelegate.swift */,
+			);
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				977D95F324FDE6E20049B37C /* ViewController.swift in Sources */,
+				97B8485525027F7A00E32D3E /* CreateCarViewModel.swift in Sources */,
 				975F8F7125009E4700D74B07 /* ImageHelper.swift in Sources */,
 				97A13C3224FED2E00084749C /* CarsViewModel.swift in Sources */,
 				977D95EF24FDE6E20049B37C /* AppDelegate.swift in Sources */,
@@ -282,6 +297,7 @@
 				97A13C3A24FEDA580084749C /* DBHelper.swift in Sources */,
 				975F8F752500B12B00D74B07 /* CarViewModel.swift in Sources */,
 				97A13C3624FED7530084749C /* ViewModelProtocol.swift in Sources */,
+				97B8485325027B4B00E32D3E /* CreateCarViewController.swift in Sources */,
 				97A13C3824FED7F70084749C /* BaseViewController.swift in Sources */,
 				97A13C2524FE998D0084749C /* CarCell.swift in Sources */,
 				977D95F124FDE6E20049B37C /* SceneDelegate.swift in Sources */,

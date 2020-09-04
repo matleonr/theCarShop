@@ -30,29 +30,22 @@ class CarViewController: BaseViewController, UITextFieldDelegate {
         setDelegate()
         setUI(car: car!)
         bind()
-        let tap : UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         view.addGestureRecognizer(tap)
-        
     }
-    
-    
-    
+
     func setUI(car: Car) {
         title = car.model
-
-        carImageView.image = UIImage(named: (car.image)!)
+        carImageView.image = carImageView.image?.withRenderingMode(.alwaysTemplate)
+        carImageView.tintColor = .lightGray
+        //carImageView.image = UIImage(named: (car.image)!)
 
         setStatusImage(carStatus: car.status!)
         categoryTextfield.text = car.category
         priceTextfield.text = String(car.price!)
         numberOfSeatsTextField.text = String(car.seats!)
         yearTextfield.text = String(car.dateReleased!)
-        
-        
     }
-    
-    
-   
 
     func setStatusImage(carStatus: String) {
         if carStatus == "new" {
@@ -65,24 +58,22 @@ class CarViewController: BaseViewController, UITextFieldDelegate {
             statusImageView.tintColor = UIColor(displayP3Red: 250 / 255, green: 120 / 255, blue: 24 / 255, alpha: 1)
         }
     }
-    
+
     func focusKeyboard(editionEnabled: Bool) {
-        if editionEnabled{
+        if editionEnabled {
             priceTextfield.becomeFirstResponder()
         }
-        
     }
-    
+
     func setDelegate() {
-        self.priceTextfield.delegate = self
-        self.numberOfSeatsTextField.delegate = self
-        self.yearTextfield.delegate = self
-        self.categoryTextfield.delegate = self
+        priceTextfield.delegate = self
+        numberOfSeatsTextField.delegate = self
+        yearTextfield.delegate = self
+        categoryTextfield.delegate = self
     }
-    
 
     func bind() {
-        self.carViewModel.input.car.accept(self.car)
+        carViewModel.input.car.accept(car)
         carViewModel.output.car.asObservable().subscribe(
             onNext: { car in
                 if car?.id != nil {
@@ -92,7 +83,7 @@ class CarViewController: BaseViewController, UITextFieldDelegate {
                 }
 
             }).disposed(by: disposeBag)
-        
+
         carViewModel.output.deletedCar.asObservable().subscribe(
             onNext: { deletedCar in
                 if deletedCar! {
@@ -100,23 +91,20 @@ class CarViewController: BaseViewController, UITextFieldDelegate {
                 }
             }
         )
-        
-        
-        
-        carViewModel.output.edititonEnabled.asObservable().subscribe(
-        onNext: { editionEnabled in
-            self.priceTextfield.isEnabled = editionEnabled!
-            self.numberOfSeatsTextField.isEnabled = editionEnabled!
-            self.categoryTextfield.isEnabled = editionEnabled!
-            self.yearTextfield.isEnabled = editionEnabled!
-            self.deleteButton.isHidden = !editionEnabled!
-            self.saveButton.isHidden = !editionEnabled!
-            self.focusKeyboard(editionEnabled: editionEnabled!)
-            self.enabledEdition = editionEnabled!
 
-        }).disposed(by: disposeBag)
-        
-        
+        carViewModel.output.edititonEnabled.asObservable().subscribe(
+            onNext: { editionEnabled in
+                self.priceTextfield.isEnabled = editionEnabled!
+                self.numberOfSeatsTextField.isEnabled = editionEnabled!
+                self.categoryTextfield.isEnabled = editionEnabled!
+                self.yearTextfield.isEnabled = editionEnabled!
+                self.deleteButton.isHidden = !editionEnabled!
+                self.saveButton.isHidden = !editionEnabled!
+                self.focusKeyboard(editionEnabled: editionEnabled!)
+                self.enabledEdition = editionEnabled!
+
+            }).disposed(by: disposeBag)
+
         saveButton.rx.tap.asObservable().subscribe(
             onNext: {
                 self.car = Car(id: (self.car?.id)!, model: (self.car?.model)!, seats: Int(self.numberOfSeatsTextField.text!)!, status: (self.car?.status)!, price: Int(self.priceTextfield.text!)!, dateReleased: Int(self.yearTextfield.text!)!, category: self.categoryTextfield.text!, image: (self.car?.image)!)
@@ -126,16 +114,15 @@ class CarViewController: BaseViewController, UITextFieldDelegate {
             }
         ).disposed(by: disposeBag)
         saveButton.rx.tap.throttle(0.5, scheduler: MainScheduler.instance).subscribe(carViewModel.input.saveButtonPressed).disposed(by: disposeBag)
-        
+
         deleteButton.rx.tap.asObservable().subscribe(
             onNext: {
-                
                 self.carViewModel.input.edititonEnabled.accept(self.enabledEdition)
                 self.dismissKeyboard()
             }
         ).disposed(by: disposeBag)
         deleteButton.rx.tap.throttle(0.5, scheduler: MainScheduler.instance).subscribe(carViewModel.input.deleteButtonPressed).disposed(by: disposeBag)
-        
+
         editBarButton.rx.tap.asObservable().subscribe(
             onNext: {
                 self.carViewModel.input.edititonEnabled.accept(self.enabledEdition)
